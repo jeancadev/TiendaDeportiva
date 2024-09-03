@@ -1,0 +1,27 @@
+﻿@using TiendaDeportiva.Models
+
+@model List<TiendaDeportiva.Models.Tienda>
+
+<h1 style="color: #4a4a4a;">Tiendas de Categoría @ViewBag.Categoria</h1>
+
+<div style="background-color: #ecf0f1; padding: 20px; border-radius: 5px;">
+    @if (Model.Any())
+    {
+        <ul>
+            @foreach (var tienda in Model)
+            {
+                <li style="margin-bottom: 10px;">@tienda.Nombre</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No hay tiendas en esta categoría.</p>
+    }
+</div>
+
+<div style="margin-top: 20px;">
+    <a href="@Url.Action("Index")" style="text-decoration: none; padding: 10px 20px; background-color: #3498db; color: white; border-radius: 5px;">
+        Volver a la página principal
+    </a>
+</div>

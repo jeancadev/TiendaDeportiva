@@ -1,0 +1,53 @@
+﻿@using TiendaDeportiva.Models
+
+@model TiendaDeportiva.Models.Estudiante
+
+<h1 style="color: #4a4a4a;">Bienvenido a Tienda Deportiva</h1>
+
+<h2 style="color: #2c3e50;">Informacion del Estudiante</h2>
+<div style="background-color: #ecf0f1; padding: 20px; border-radius: 5px;">
+    <p><strong>Nombre:</strong> @Model.Nombre @Model.Apellido</p>
+    <p><strong>Edad:</strong> @Model.Edad</p>
+    <p><strong>Profesión:</strong> @Model.Profesion</p>
+
+    <h3>Deportes favoritos:</h3>
+    <ul>
+        @foreach (var deporte in Model.Deportes)
+        {
+                <li>@deporte</li>
+        }
+    </ul>
+
+    <h3>Entretenimiento:</h3>
+    <ul>
+        @foreach (var entretenimiento in Model.Entretenimiento)
+        {
+                <li>@entretenimiento</li>
+        }
+    </ul>
+
+    <h3>Alimentación:</h3>
+    <ul>
+        @foreach (var alimento in Model.Alimentacion)
+        {
+                <li>@alimento</li>
+        }
+    </ul>
+</div>
+
+<h2 style="color: #2c3e50; margin-top: 30px;">Categorias de Tiendas</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    @foreach (var categoria in Enum.GetValues(typeof(TiendaDeportiva.Models.CategoriaTienda)))
+    {
+            <a href="@Url.Action("Categoria", new { categoria = categoria })" 
+               style="text-decoration: none; padding: 10px 20px; background-color: #3498db; color: white; border-radius: 5px;">
+            @categoria
+            </a>
+    }
+</div>
+
+<div style="margin-top: 30px;">
+    <a href="@Url.Action("Informacion")" style="text-decoration: none; padding: 10px 20px; background-color: #2ecc71; color: white; border-radius: 5px;">
+        Ver Informacion de Categorias
+    </a>
+</div>
